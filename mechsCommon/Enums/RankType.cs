@@ -1,0 +1,38 @@
+﻿namespace Mechs.Common.Enums
+{
+    public enum RankType
+    {
+        Private,
+        Corporal,
+        Sergeant,
+        StaffSergeant,
+        WarrantOfficer,
+        Subensign,
+        Ensign,
+        StaffEnsign,
+        Sublieutenant,
+        Lieutenant,
+        LieutenantCommander,
+        Captain,
+        Major,
+        LieutenantColonel,
+        Colonel,
+        Commodore,
+        RearAdmiral,
+        ViceAdmiral,
+        Admiral,
+        MasterAdmiral,
+        Marshal,
+        Dimarshal,
+        Quadromarshal,
+        MasterMarshal,
+        Tactician,
+        Ditactician,
+        Quadrotactician,
+        MasterTactician,
+        Strategist,
+        Distrategist,
+        Quadrostrategist,
+        Archistratege
+    }
+}

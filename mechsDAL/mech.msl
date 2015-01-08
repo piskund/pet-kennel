@@ -1,0 +1,81 @@
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="mechDBModelStoreContainer" CdmEntityContainer="mechDBEntities">
+          <EntitySetMapping Name="MechSet">
+            <EntityTypeMapping TypeName="IsTypeOf(mechDBModel.Mech)">
+              <MappingFragment StoreEntitySet="mechs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WarriorSet">
+            <EntityTypeMapping TypeName="IsTypeOf(mechDBModel.Warrior)">
+              <MappingFragment StoreEntitySet="warriors">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_warriors_mechs" TypeName="mechDBModel.FK_warriors_mechs" StoreEntitySet="warriors">
+            <EndProperty Name="mechs">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <EndProperty Name="warriors">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_parts_mechs" TypeName="mechDBModel.FK_parts_mechs" StoreEntitySet="parts">
+            <EndProperty Name="parts">
+              <ScalarProperty Name="id" ColumnName="id" /></EndProperty>
+            <EndProperty Name="mechs">
+              <ScalarProperty Name="id" ColumnName="id" /></EndProperty></AssociationSetMapping>
+          <EntitySetMapping Name="PartSet"><EntityTypeMapping TypeName="IsTypeOf(mechDBModel.Part)">
+              <MappingFragment StoreEntitySet="parts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+              </MappingFragment>
+            </EntityTypeMapping><EntityTypeMapping TypeName="IsTypeOf(mechDBModel.Chassis)">
+              <MappingFragment StoreEntitySet="chassis">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="speed" ColumnName="speed" />
+                <ScalarProperty Name="passability" ColumnName="passability" />
+                <ScalarProperty Name="consumption" ColumnName="consumption" />
+              </MappingFragment>
+            </EntityTypeMapping><EntityTypeMapping TypeName="IsTypeOf(mechDBModel.Engine)">
+              <MappingFragment StoreEntitySet="engine">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="power" ColumnName="power" />
+                <ScalarProperty Name="efficiency" ColumnName="efficiency" />
+              </MappingFragment>
+            </EntityTypeMapping><EntityTypeMapping TypeName="IsTypeOf(mechDBModel.Radar)">
+              <MappingFragment StoreEntitySet="radar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="consumption" ColumnName="consumption" />
+                <ScalarProperty Name="efficiency" ColumnName="efficiency" />
+                <ScalarProperty Name="range" ColumnName="range" />
+              </MappingFragment>
+            </EntityTypeMapping><EntityTypeMapping TypeName="IsTypeOf(mechDBModel.Weapon)">
+              <MappingFragment StoreEntitySet="weapon">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="consumption" ColumnName="consumption" />
+                <ScalarProperty Name="efficiency" ColumnName="efficiency" />
+                <ScalarProperty Name="range" ColumnName="range" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+              </MappingFragment>
+            </EntityTypeMapping><EntityTypeMapping TypeName="IsTypeOf(mechDBModel.Cell)">
+              <MappingFragment StoreEntitySet="cell">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="capacity" ColumnName="capacity" />
+                <ScalarProperty Name="output" ColumnName="output" />
+              </MappingFragment>
+            </EntityTypeMapping><EntityTypeMapping TypeName="IsTypeOf(mechDBModel.Hull)">
+              <MappingFragment StoreEntitySet="hull">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="volume" ColumnName="volume" />
+              </MappingFragment>
+            </EntityTypeMapping></EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>

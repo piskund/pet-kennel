@@ -1,0 +1,88 @@
+      <Schema Namespace="mechDBModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="mechDBEntities">
+          <EntitySet Name="MechSet" EntityType="mechDBModel.Mech" />
+          <EntitySet Name="WarriorSet" EntityType="mechDBModel.Warrior" />
+          <AssociationSet Name="FK_parts_mechs" Association="mechDBModel.FK_parts_mechs">
+            <End Role="mechs" EntitySet="MechSet" />
+            <End Role="parts" EntitySet="PartSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_warriors_mechs" Association="mechDBModel.FK_warriors_mechs">
+            <End Role="mechs" EntitySet="MechSet" />
+            <End Role="warriors" EntitySet="WarriorSet" />
+          </AssociationSet>
+          <EntitySet Name="PartSet" EntityType="mechDBModel.Part" /></EntityContainer>
+        <EntityType Name="Cell" BaseType="mechDBModel.Part">
+          <Property Name="capacity" Type="Int32" Nullable="false" />
+          <Property Name="output" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chassis" BaseType="mechDBModel.Part">
+          <Property Name="speed" Type="Int32" Nullable="false" />
+          <Property Name="passability" Type="Byte" Nullable="false" />
+          <Property Name="consumption" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Engine" BaseType="mechDBModel.Part">
+          <Property Name="power" Type="Int32" Nullable="false" />
+          <Property Name="efficiency" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hull" BaseType="mechDBModel.Part">
+          <Property Name="volume" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mech">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="parts" Relationship="mechDBModel.FK_parts_mechs" FromRole="mechs" ToRole="parts" />
+          <NavigationProperty Name="warriors" Relationship="mechDBModel.FK_warriors_mechs" FromRole="mechs" ToRole="warriors" />
+        </EntityType>
+        <EntityType Name="Part" Abstract="true">
+          <Key>
+            <PropertyRef Name="id" /></Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="type" Type="Int16" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="weight" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mechs" Relationship="mechDBModel.FK_parts_mechs" FromRole="parts" ToRole="mechs" />
+        </EntityType>
+        <EntityType Name="Radar" BaseType="mechDBModel.Part">
+          <Property Name="consumption" Type="Int32" Nullable="false" />
+          <Property Name="efficiency" Type="Byte" Nullable="false" />
+          <Property Name="range" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Warrior">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="mechs" Relationship="mechDBModel.FK_warriors_mechs" FromRole="warriors" ToRole="mechs" />
+        </EntityType>
+        <EntityType Name="Weapon" BaseType="mechDBModel.Part">
+          <Property Name="consumption" Type="Int32" Nullable="false" />
+          <Property Name="efficiency" Type="Byte" Nullable="false" />
+          <Property Name="range" Type="Int32" Nullable="false" />
+          <Property Name="rate" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_parts_mechs">
+          <End Role="mechs" Type="mechDBModel.Mech" Multiplicity="1" />
+          <End Role="parts" Type="mechDBModel.Part" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="mechs">
+              <PropertyRef Name="id" /></Principal>
+            <Dependent Role="parts">
+              <PropertyRef Name="id" /></Dependent></ReferentialConstraint></Association>
+        <Association Name="FK_warriors_mechs">
+          <End Role="mechs" Type="mechDBModel.Mech" Multiplicity="1" />
+          <End Role="warriors" Type="mechDBModel.Warrior" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="mechs">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="warriors">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
