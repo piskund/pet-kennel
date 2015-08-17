@@ -49,11 +49,11 @@
     <Compile Include="TimeLineTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\mechsBL\MechsBL.csproj">
+    <ProjectReference Include="..\mechsBL\Mechs.BL.csproj">
       <Project>{56F18E13-7E62-42D6-930F-504556439491}</Project>
       <Name>MechsBL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\mechsCommon\MechsCommon.csproj">
+    <ProjectReference Include="..\mechsCommon\Mechs.Common.csproj">
       <Project>{C1BF0559-5D63-4050-8A12-FE6F7F088C4B}</Project>
       <Name>MechsCommon</Name>
     </ProjectReference>
