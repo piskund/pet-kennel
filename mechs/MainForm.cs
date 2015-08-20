@@ -34,8 +34,6 @@ namespace Mechs
 
         private void btnEndOfTurn_Click(object sender, EventArgs e)
         {
-            //TimeLine.Instance.EndOfTurn();
-            //this.ShowTimeline();
         }
     }
 }
